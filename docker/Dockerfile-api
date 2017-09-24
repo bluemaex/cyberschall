@@ -1,0 +1,6 @@
+FROM bluemaex/php7-nginx:0.0.8
+MAINTAINER mail@bluemaex.de
+
+COPY docker/api/docker-init.d /docker-init.d
+COPY api /var/www
+WORKDIR /var/www

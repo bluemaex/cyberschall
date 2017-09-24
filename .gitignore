@@ -1,0 +1,5 @@
+**/.env
+/var
+/api/var
+/api/vendor
+/api/web/php*
