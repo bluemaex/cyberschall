@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+$app = require __DIR__ . '/../src/app.php';
+
+$app->register(new \Knp\Provider\ConsoleServiceProvider(), [
+    'console.name'              => $app['app.name'],
+    'console.version'           => $app['app.version'],
+    'console.project_directory' => __DIR__.'/..'
+]);
+$app->register(new \Bluemaex\Cyberschall\Command\Provider());
+
+$app['console']->run();

@@ -1,5 +1,8 @@
-**/.env
-/var
-/api/var
-/api/vendor
-/api/web/php*
+api/var
+api/vendor
+api/web/php*
+
+web/node_modules
+web/build
+web/coverage
+web/*.log*

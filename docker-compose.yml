@@ -8,5 +8,5 @@ services:
             - 1337:80
         environment:
           - APP_ENV=DEVELOPMENT
-          - DATABASE_DSN=sqlite:///var/cyberschall.sqlite
+          - DATABASE_DSN=sqlite:////var/www/var/cyberschall.sqlite
         cpu_shares: 1024

@@ -1,0 +1,4 @@
+name: Cyberschall Migrations
+migrations_namespace: DoctrineMigration
+table_name: DoctrineMigrationVersion
+migrations_directory: ./resources/migration
