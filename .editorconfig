@@ -6,7 +6,7 @@ end_of_line = lf
 indent_style = space
 indent_size = 4
 
-[*.{js,jsx,yml}]
+[*.{js,jsx,yml,json}]
 indent_size = 2
 
 [Makefile]

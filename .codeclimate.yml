@@ -1,0 +1,52 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+      - php
+  eslint:
+    enabled: true
+    channel: "eslint-4"
+    config:
+      config: web/.eslintrc.json
+      ignore_path: web/.eslintignore
+    checks:
+      import/no-unresolved:
+        enabled: false
+  fixme:
+    enabled: true
+  git-legal:
+    enabled: true
+  markdownlint:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "PSR2"
+  phpmd:
+    enabled: true
+  shellcheck:
+    enabled: true
+  stylelint:
+    enabled: true
+    config:
+      config: web/.styelintrc
+ratings:
+  paths:
+    - "**.css"
+    - "**.inc"
+    - "**.js"
+    - "**.jsx"
+    - "**.md"
+    - "**.module"
+    - "**.php"
+    - "**.py"
+    - "**.rb"
+    - "**.sh"
+    - "web/package.json"
+    - "web/yarn.lock"
+    - "api/composer.*"
+exclude_paths:
+  - "api/resources/migration"

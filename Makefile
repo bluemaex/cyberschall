@@ -6,12 +6,19 @@ help: ## Helping devs since 2016
 	@cat $(MAKEFILE_LIST) | grep -e "^[a-zA-Z_\-]*: *.*## *" | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 	@echo
 	@$(MAKE) api-help
+	@echo
+	@$(MAKE) web-help
 
 install: api-install
 
 ci: api-ci
 
 test: api-test
+ssh: ssh-api
+
+sync: sync-api
+
+# Multitarget rules
 
 api-%:
 	@$(MAKE) -C ./api $*

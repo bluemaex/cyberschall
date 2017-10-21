@@ -1,0 +1,27 @@
+language: php
+sudo: false
+
+install:
+  - nvm install 8.5.0
+  - make install
+
+before_script:
+  - phpenv config-rm xdebug.ini
+  - cd $TRAVIS_BUILD_DIR
+
+script:
+  - make ci
+
+cache:
+  yarn: true
+  directories:
+    - $HOME/.composer/cache/files
+
+notifications:
+  email:
+    on_success: never
+
+branches:
+  only:
+    - master
+    - /^\d+\.\d+\.\d+$/
