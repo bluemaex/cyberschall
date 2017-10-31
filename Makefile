@@ -9,11 +9,12 @@ help: ## Helping devs since 2016
 	@echo
 	@$(MAKE) web-help
 
-install: api-install
+install: api-install web-install
 
-ci: api-ci
+ci: api-ci web-ci
 
-test: api-test
+test: api-test web-test
+
 ssh: ssh-api
 
 sync: sync-api
@@ -22,6 +23,9 @@ sync: sync-api
 
 api-%:
 	@$(MAKE) -C ./api $*
+
+web-%:
+	@$(MAKE) -C ./web $*
 
 ssh-%:
 	docker exec -it $(shell docker ps -qf name="^/$(APP_DIR).$*.{0,2}$$") sh
