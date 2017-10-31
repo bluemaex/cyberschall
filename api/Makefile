@@ -33,6 +33,9 @@ phpcs: ## Run style checks
 	./vendor/bin/phpmd src text unusedcode
 	./vendor/bin/phpmd test text unusedcode
 
+outdated:
+	./composer.phar outdated
+
 create-sqlite: ## create a SQL database with demo data
 	mkdir -p var && touch var/cyberschall.sqlite
 	./bin/console orm:schema-tool:update --force

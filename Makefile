@@ -11,6 +11,8 @@ help: ## Helping devs since 2016
 
 install: api-install web-install
 
+outdated: api-outdated web-outdated
+
 ci: api-ci web-ci
 
 test: api-test web-test
