@@ -1,22 +1,28 @@
 sudo: false
 language: php
-php: '7.1'
+
+matrix:
+  include:
+    - php: 7.1
+      env: MATRIX_JOB=api
+    - php: 7.1
+      env: MATRIX_JOB=web
 
 install:
-  - nvm install 8.5.0
-  - make install
+  - if test "${MATRIX_JOB}" == "web"; then nvm install 8.5.0; fi
+  - make "${MATRIX_JOB}-install"
 
 before_script:
   - phpenv config-rm xdebug.ini
   - cd $TRAVIS_BUILD_DIR
 
 script:
-  - make ci
+  - make "${MATRIX_JOB}-ci"
 
 cache:
-  yarn: true
   directories:
     - $HOME/.composer/cache/files
+    - $HOME/.yarn-cache
 
 notifications:
   email:
