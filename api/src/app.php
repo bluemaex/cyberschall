@@ -66,6 +66,9 @@ $app->register(new \Bluemaex\Cyberschall\Doctrine\Provider(), [
 ]);
 
 // security firewall
+$app->register(new \Bluemaex\Cyberschall\Security\Jwt\Provider(), [
+    'security.jwt.secret' => Environment::getenv('JWT_SECRET'),
+]);
 $app->register(new \Bluemaex\Cyberschall\Security\Provider());
 
 // Cors + HAL
@@ -73,6 +76,7 @@ $app->register(new JDesrosiers\Silex\Provider\CorsServiceProvider());
 $app['cors-enabled']($app);
 
 // Register Application Services
+$app->register(new \Bluemaex\Cyberschall\Auth\Provider());
 $app->register(new \Bluemaex\Cyberschall\Index\Provider());
 
 // json middleware:

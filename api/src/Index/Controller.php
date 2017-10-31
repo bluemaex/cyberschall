@@ -20,7 +20,7 @@ class Controller
 {
     public function __construct(TokenInterface $token = null)
     {
-        $this->user = $token !== null ? $token->getUser() : null;
+        $this->user = null !== $token ? $token->getUser() : null;
     }
 
     public function indexAction(): JsonResponse

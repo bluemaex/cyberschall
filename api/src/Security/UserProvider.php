@@ -22,11 +22,8 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class UserProvider implements UserProviderInterface
 {
-    const ERROR_NOTFOUND = 'Access-Token is not valid';
-
     /** @var UserRepository */
     private $repository;
-    /** @var bool */
     private $debug;
 
     public function __construct(UserRepository $repository, bool $debug)
@@ -35,11 +32,11 @@ class UserProvider implements UserProviderInterface
         $this->debug = $debug;
     }
 
-    public function loadUserByUsername($accessToken): User
+    public function loadUserByUsername($username): User
     {
-        $user = $this->repository->findBy(['id' => $accessToken]);
+        $user = $this->repository->findOneBy(['username' => $username]);
         if (null === $user) {
-            throw new UsernameNotFoundException(self::ERROR_NOTFOUND);
+            throw new UsernameNotFoundException();
         }
 
         return $user;
@@ -51,11 +48,11 @@ class UserProvider implements UserProviderInterface
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
-        return $this->loadUserByUsername($user->getPassword());
+        return $this->loadUserByUsername($user->getUsername());
     }
 
     public function supportsClass($class): bool
     {
-        return 'Bluemaex\Cyberschall\Entity\User' === $class;
+        return User::class === $class;
     }
 }

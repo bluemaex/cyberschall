@@ -9,4 +9,5 @@ services:
         environment:
           - APP_ENV=DEVELOPMENT
           - DATABASE_DSN=sqlite:////var/www/var/cyberschall.sqlite
+          - JWT_SECRET=xWn+do3YgtUVBHgZDZ*nb7VP6F6hpLXnkW3z^N[kUuVUj$w#m8
         cpu_shares: 1024

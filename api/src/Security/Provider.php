@@ -21,8 +21,6 @@ class Provider implements ServiceProviderInterface
 {
     public function register(Container $app): void
     {
-        $app['security.user.token_authenticator'] = function () {
-            return new TokenAuthenticator();
         $app['security.cors.preflight_matcher'] = function () {
             return new Cors\PreflightRequestMatcher();
         };
@@ -36,7 +34,7 @@ class Provider implements ServiceProviderInterface
 
         $app->register(new \Silex\Provider\SecurityServiceProvider(), [
             'security.access_rules' => [
-                ['^/(config)$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
+                ['^/(auth/login)$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
                 ['^.*$', 'ROLE_USER'],
             ],
             'security.firewalls' => [
@@ -50,7 +48,7 @@ class Provider implements ServiceProviderInterface
                     'anonymous' => true,
                     'guard' => [
                         'authenticators' => [
-                            'security.user.token_authenticator',
+                            'security.jwt.authenticator',
                         ],
                     ],
                     'users' => $app['security.user.provider'],
