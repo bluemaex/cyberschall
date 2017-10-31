@@ -1,0 +1,40 @@
+{
+  "name": "cyberschall-web",
+  "version": "0.0.7",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "eject": "react-scripts eject",
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom",
+    "lint": "eslint --ext .js,.jsx src/ && stylelint 'src/**/*.css'",
+    "lint-fix": "eslint --fix --ext .js,.jsx src/ && stylelint --fix 'src/**/*.css'",
+    "prettier": "prettier --write 'src/**/*.{js,jsx}'"
+  },
+  "dependencies": {
+    "history": "^4.7.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.8",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0 || ^4.3.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "1.7.4",
+    "react-scripts": "^1.0.14",
+    "stylelint": "^8.2.0",
+    "stylelint-config-standard": "^17.0.0"
+  }
+}
