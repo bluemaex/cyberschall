@@ -1,5 +1,6 @@
-language: php
 sudo: false
+language: php
+php: '7.1'
 
 install:
   - nvm install 8.5.0

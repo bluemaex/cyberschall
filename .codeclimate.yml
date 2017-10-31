@@ -32,7 +32,7 @@ engines:
   stylelint:
     enabled: true
     config:
-      config: web/.styelintrc
+      config: web/.stylelintrc.json
 ratings:
   paths:
     - "**.css"

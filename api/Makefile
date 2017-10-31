@@ -7,7 +7,8 @@ help:
 	@echo "API ./bin/console Commands"
 	@./bin/console list
 
-install: composer create-sqlite ## Setup this project
+install: composer ## Setup this project
+	@if test -z "$${TRAVIS}"; then $(MAKE) create-sqlite; fi
 
 test: phpunit ## Run all the unit tests
 
