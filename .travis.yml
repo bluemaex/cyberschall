@@ -1,23 +1,30 @@
 sudo: false
-language: php
 
-matrix:
+jobs:
   include:
-    - php: 7.1
-      env: MATRIX_JOB=api
-    - php: 7.1
-      env: MATRIX_JOB=web
-
-install:
-  - if test "${MATRIX_JOB}" == "web"; then nvm install 8.5.0; fi
-  - make "${MATRIX_JOB}-install"
-
-before_script:
-  - phpenv config-rm xdebug.ini
-  - cd $TRAVIS_BUILD_DIR
-
-script:
-  - make "${MATRIX_JOB}-ci"
+    - stage: test
+      language: php
+      php: '7.1'
+      before_script: phpenv config-rm xdebug.ini
+      env: JOB=api
+      install: make api-install
+      script: make api-ci
+    - language: node_js
+      node_js: 8
+      env: JOB=web
+      install: make web-install
+      script: make web-ci
+    - stage: deploy
+      if: branch = master
+      language: node_js
+      node_js: 8
+      env: JOB=deploy-playground
+      script: node -e "console.log('ship it to playground')"
+    - if: tag =~ ^\d+\.\d+\.\d+$
+      language: node_js
+      node_js: 8
+      env: JOB=deploy-production
+      script: node -e "console.log('ship it to production')"
 
 cache:
   directories:
